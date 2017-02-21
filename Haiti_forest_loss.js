@@ -1,11 +1,20 @@
+//The clipping function used in the forest_loss.js file does not propery clip
+//Haiti from the D.R.; parts of the winter range that are contiguous across
+//the border show up in the clipped versions for both Haiti and the DR, such
+//that the analysis conducted on each country double-counts some areas. There
+//also appear to be areas within a certain distance of the border that are counted
+//as occuring in both countries. So, for a country-specific analysis, you have to start
+//with a shapefile that is already clipped to each country. The Fusion Table used in this
+//script has alreadby been clipped to Haiti.
+
 //Set the GFC image to be used:
 var gfcImage = ee.Image('UMD/hansen/global_forest_change_2015');
 
 /*
 Get the Bicknell's Thrush distribution model. To get this model,
 I 1) downloaded the shapefile from https://doi.org/10.6084/m9.figshare.4126782.v1,
-2) opened it in QGIS, 3) saved the shapefile as a KML, and
-4) imported the KML into a Google Fusion Table. The i.d. string
+2) opened it in QGIS, 3) clipped the shapefile to include only Haiti, 4) saved the shapefile as a KML, and
+5) imported the KML into a Google Fusion Table. The i.d. string
 comes from the Fusion Table properties: File > About this Table.
 */
 var BITHhaiti = ee.FeatureCollection('ft:1v75op5jJ93R9tjIpGGx8Y5qWY73jDwX9Ii8Oqpeu');
