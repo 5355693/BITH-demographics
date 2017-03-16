@@ -4,7 +4,6 @@
 //and small-scale resolution.
 var mod13q1 = ee.ImageCollection('MODIS/006/MOD13Q1')
 .filterDate('2015-12-01','2016-03-31');
-//.filter(ee.Filter.eq('SummaryQA',"0"));
 
 var ndvi = mod13q1.select(['NDVI']);//select the band we want
 var median = ndvi.median();
